@@ -18,7 +18,7 @@ def Defense(x, in_channel, out_channel, kernel, a, b, clip_min_weight,
     downsample.bias.data = bias    
     
     upsample = nn.ConvTranspose2d(out_channel, in_channel, kernel, stride=1, padding=1)       
-    upsample.weight.data = weights.to(device)
+    upsample.weight.data = weights
     upsample.bias.data = upsample.bias.data.uniform_(clip_min_bias, clip_max_bias).to(device)
     
     h = downsample(x)
