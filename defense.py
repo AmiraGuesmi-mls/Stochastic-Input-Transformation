@@ -12,7 +12,6 @@ def Defense(x, in_channel, out_channel, kernel, a, b, clip_min_weight,
                   clip_max_weight, clip_min_bias, clip_max_bias):
     weights = torch.randn(out_channel, in_channel, 
                       kernel, kernel).uniform_(clip_min_weight, clip_max_weight).to(device)
-    print(weights[0][0][0][0])
     bias = torch.randn(out_channel).uniform_(clip_min_bias , clip_max_bias).to(device)
     downsample = nn.Conv2d(in_channel, out_channel, kernel, stride=1, padding=1)   
     downsample.weight.data =  weights
